@@ -39,22 +39,86 @@ class ArraysOperationsTests {
 
 	@Test
 	void testRemove() {
-		fail("Not yet implemented");
+		Integer ar[] = {10, -20, 5, 80};
+		Integer actual[] = new Integer[ar.length - 1];
+		int indRem1 = 0;
+		Integer expected1[] = {-20, 5, 80};
+		int indRem2 = 1;
+		Integer expected2[] = {10, 5, 80};
+		int indRem3 = 3;
+		Integer expected3[] = {10, -20, 5};
+		assertEquals(OK, remove(ar, indRem1, actual));
+		assertArrayEquals(expected1, actual );
+		assertEquals(OK, remove(ar, indRem2, actual));
+		assertArrayEquals(expected2, actual );
+		assertEquals(OK, remove(ar, indRem3, actual));
+		assertArrayEquals(expected3, actual );
+		int indRemWrong = 4;
+		assertEquals(WRONG_INDEX, remove(ar, indRemWrong, actual));
+		indRemWrong = -1;
+		assertEquals(WRONG_INDEX, remove(ar, indRemWrong, actual));
+		actual = new Integer[2];
+		assertEquals(WRONG_RESULT_LENGTH, remove(ar, indRem1, actual));
+		actual = new Integer[4];
+		assertEquals(WRONG_RESULT_LENGTH, remove(ar, indRem1, actual));
+		String names[] = {"name1", "name2"};
+		
+		assertEquals(WRONG_RESULT_LENGTH, remove(names, 0, names));
+		
 	}
 
 	@Test
 	void testInsertSorted() {
-		fail("Not yet implemented");
+		int inserted1 = 5;
+		int inserted2 = 20;
+		int inserted3 = 25;
+		int inserted4 = 45;
+		Integer ar[] = {10, 20, 30, 40};
+		Integer actual[] = new Integer[ar.length + 1];
+		Integer expected1[] = {inserted1, 10, 20, 30, 40};
+		Integer expected2[] = {10, inserted2, 20, 30, 40};
+		Integer expected3[] = {10, 20, inserted3, 30, 40};
+		Integer expected4[] = {10, 20, 30, 40, inserted4};
+		assertEquals(OK, insertSorted(ar, inserted1, actual));
+		assertArrayEquals(expected1, actual);
+		assertEquals(OK, insertSorted(ar, inserted2, actual));
+		assertArrayEquals(expected2, actual);
+		assertEquals(OK, insertSorted(ar, inserted3, actual));
+		assertArrayEquals(expected3, actual);
+		assertEquals(OK, insertSorted(ar, inserted4, actual));
+		assertArrayEquals(expected4, actual);
+		
+		String names[] = {"name1", "name2"};
+		assertEquals(WRONG_RESULT_LENGTH, insertSorted(names, "name3", names));
+		
 	}
 
 	@Test
 	void testAddLast() {
-		fail("Not yet implemented");
+		int insertedNumber = 4;
+		Integer ar[] = {1,2,3};
+		Integer expected[] = {1, 2, 3, insertedNumber};
+		Integer actual[] = new Integer[ar.length + 1];
+		assertEquals(OK, addLast(ar, insertedNumber, actual));
+		assertArrayEquals(expected, actual);
+		String names[] = {"name1", "name2"};
+		assertEquals(WRONG_RESULT_LENGTH, addLast(names, "name3", names));
+
 	}
 
 	@Test
 	void testAddFirst() {
-		fail("Not yet implemented");
+		int insertedNumber = 4;
+		Integer ar[] = {1,2,3};
+		Integer expected[] = {insertedNumber, 1, 2, 3 };
+		Integer actual[] = new Integer[ar.length + 1];
+		assertEquals(OK, addFirst(ar, insertedNumber, actual));
+		assertArrayEquals(expected, actual);
+		String names[] = {"name1", "name2"};
+		assertEquals(WRONG_RESULT_LENGTH, addFirst(names, "name3", names));
 	}
+	
+	
+	
 
 }
