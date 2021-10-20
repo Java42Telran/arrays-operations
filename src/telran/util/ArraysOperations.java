@@ -23,7 +23,7 @@ public static  <T> String insert(T[] array, T element, int index, T[] res) {
 	return OK;
 	
 }
-public static <T> String remove(T[] array, int index, T[] res) {
+public static  <T> String remove(T[] array, int index,T[] res) {
 	if (index < 0 || index >= array.length) {
 		return WRONG_INDEX;
 	}

@@ -18,7 +18,8 @@ class ArraysOperationsTests {
 		int indexInsert = 1;
 		assertEquals(OK,insert(arStr, INSERTED_STRING, indexInsert, actualStr));
 		assertArrayEquals(expectedStr, actualStr);
-		assertEquals(WRONG_INDEX,insert(arStr, INSERTED_STRING, 100, actualStr));
+		assertEquals(WRONG_INDEX,insert(arStr, INSERTED_STRING, 3, actualStr));
+		assertEquals(WRONG_INDEX,insert(arStr, INSERTED_STRING, -1, actualStr));
 		actualStr = new String[1];
 		assertEquals(WRONG_RESULT_LENGTH,insert(arStr, INSERTED_STRING, indexInsert, actualStr));
 		Integer numbers[] = {1, 2, 3};
@@ -61,8 +62,8 @@ class ArraysOperationsTests {
 		assertEquals(WRONG_RESULT_LENGTH, remove(ar, indRem1, actual));
 		actual = new Integer[4];
 		assertEquals(WRONG_RESULT_LENGTH, remove(ar, indRem1, actual));
+		//Tests with strings are for testing method parameterization <T>
 		String names[] = {"name1", "name2"};
-		
 		assertEquals(WRONG_RESULT_LENGTH, remove(names, 0, names));
 		
 	}
@@ -87,7 +88,7 @@ class ArraysOperationsTests {
 		assertArrayEquals(expected3, actual);
 		assertEquals(OK, insertSorted(ar, inserted4, actual));
 		assertArrayEquals(expected4, actual);
-		
+		//Tests with strings are for testing method parameterization <T>
 		String names[] = {"name1", "name2"};
 		assertEquals(WRONG_RESULT_LENGTH, insertSorted(names, "name3", names));
 		
@@ -101,6 +102,7 @@ class ArraysOperationsTests {
 		Integer actual[] = new Integer[ar.length + 1];
 		assertEquals(OK, addLast(ar, insertedNumber, actual));
 		assertArrayEquals(expected, actual);
+		//Tests with strings are for testing method parameterization <T>
 		String names[] = {"name1", "name2"};
 		assertEquals(WRONG_RESULT_LENGTH, addLast(names, "name3", names));
 
@@ -114,6 +116,7 @@ class ArraysOperationsTests {
 		Integer actual[] = new Integer[ar.length + 1];
 		assertEquals(OK, addFirst(ar, insertedNumber, actual));
 		assertArrayEquals(expected, actual);
+		//Tests with strings are for testing method parameterization <T>
 		String names[] = {"name1", "name2"};
 		assertEquals(WRONG_RESULT_LENGTH, addFirst(names, "name3", names));
 	}
